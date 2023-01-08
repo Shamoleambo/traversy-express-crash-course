@@ -12,11 +12,11 @@ app.get('/api/members', (req, res) => res.json(members))
 app.get('/api/members/:id', (req, res) => {
   const member = members.find(member => member.id === parseInt(req.params.id))
   if (!member) {
-    res.status(404)
-    res.json({ message: 'No member found' })
+    res
+      .status(404)
+      .json({ message: `No member with the id of ${req.params.id}` })
   } else {
-    res.status(200)
-    res.json(member)
+    res.status(200).json(member)
   }
 })
 
