@@ -4,6 +4,10 @@ const logger = require('./middleware/logger')
 
 const app = express()
 
+//Will parse the body for json and forms respectively
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
 app.use(logger)
 
 app.use(express.static(path.join(__dirname, 'public')))
