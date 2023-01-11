@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const uuid = require('uuid')
-const members = require('../../Members')
+let members = require('../../Members')
 
 router.get('/', (req, res) => res.json(members))
 
@@ -50,6 +50,22 @@ router.put('/:id', (req, res) => {
     })
 
     res.status(200).json({ message: 'Member updated', updMember })
+  }
+})
+
+router.delete('/:id', (req, res) => {
+  const id = parseInt(req.params.id)
+  const member = members.find(member => member.id === id)
+
+  if (!member) {
+    res
+      .status(404)
+      .json({ message: `No member with the id of ${id} found to be deleted` })
+  } else {
+    members = members.filter(member => member.id !== id)
+    res
+      .status(200)
+      .json({ message: `Member with the id of ${id} deleted`, member })
   }
 })
 
