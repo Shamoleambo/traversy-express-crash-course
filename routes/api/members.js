@@ -65,7 +65,7 @@ router.delete('/:id', (req, res) => {
     members = members.filter(member => member.id !== id)
     res
       .status(200)
-      .json({ message: `Member with the id of ${id} deleted`, member })
+      .json({ message: `Member with the id of ${id} deleted`, members })
   }
 })
 
