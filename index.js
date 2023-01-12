@@ -8,7 +8,7 @@ const app = express()
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 
-app.get('/', (req, res) => res.render('index'))
+app.get('/', (req, res) => res.render('index', { title: 'Members App' }))
 
 //Will parse the body for json and forms respectively
 app.use(express.json())
