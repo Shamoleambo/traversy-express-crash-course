@@ -1,8 +1,14 @@
 const express = require('express')
 const path = require('path')
+const exphbs = require('express-handlebars')
 const logger = require('./middleware/logger')
 
 const app = express()
+
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
+
+app.get('/', (req, res) => res.render('index'))
 
 //Will parse the body for json and forms respectively
 app.use(express.json())
