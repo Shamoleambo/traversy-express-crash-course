@@ -29,7 +29,8 @@ router.post('/', (req, res) => {
     res.status(400).json({ message: 'Not a valid user' })
   } else {
     members.push(newMember)
-    res.json(members)
+    // res.json(members)
+    res.redirect('/')
   }
 })
 
